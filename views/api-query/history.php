@@ -9,25 +9,23 @@ $this->title = 'API Query History';
 ?>
 
 <div class="api-query-history">
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h2><?= Html::encode($this->title) ?></h2>
 
     <table class="table">
-        <thead>
+        <thead class="text-center">
             <tr>
                 <th>Link</th>    
-                <th>Tag Buscada</th>
-                <th>Tags</th>
+                <th>Search Tag</th>
                 <th>From Date</th>
                 <th>To Date</th>
                 <th>Created</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="text-center">
             <?php foreach ($resultData as $data): ?>
                 <tr>
                     <td><?= Html::a('<i class="fa fa-link"></i>', ['question', 'id' => $data['id']]) ?></td>
                     <td><?= Html::encode($data['tagged']) ?></td>
-                    <td><?= implode(', ', $data['tags']) ?></td>
                     <td><?= Html::encode($data['fromdate']) ?></td>
                     <td><?= Html::encode($data['todate']) ?></td>
                     <td><?= Html::encode($data['created']) ?></td>

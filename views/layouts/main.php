@@ -41,7 +41,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         'options' => ['class' => 'navbar-nav'],
         'items' => [
             ['label' => 'Question Api', 'url' => ['/api-query/questions']],
-            ['label' => 'Historial', 'url' => ['/api-query/historys']],
+            ['label' => 'Historial', 'url' => ['/api-query/history']],
         ]
     ]);
     NavBar::end();

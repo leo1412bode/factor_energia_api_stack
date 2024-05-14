@@ -6,23 +6,23 @@ $this->title = 'Question Details';
 ?>
 
 <div class="question-view">
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h2><?= Html::encode($this->title) ?></h2>
 
     <table class="table" style="margin: 0 auto; background-color: blue;">
-        <thead>
+        <thead class="text-center">
             <tr>  
-                <th style="text-align: center;" >Tag Buscada</th>
-                <th style="text-align: center;" >From Date</th>
-                <th style="text-align: center;" >To Date</th>
-                <th style="text-align: center;" >Created</th>
+                <th>Tag Buscada</th>
+                <th>From Date</th>
+                <th>To Date</th>
+                <th>Created</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="text-center">
             <tr>
-            <td style="text-align: center;"><?= Html::encode($resultData[0]['tagged']) ?></td>
-            <td style="text-align: center;"><?= Html::encode($resultData[0]['fromdate']) ?></td>
-            <td style="text-align: center;"><?= Html::encode($resultData[0]['todate']) ?></td>
-            <td style="text-align: center;"><?= Html::encode($resultData[0]['created']) ?></td>
+            <td ><?= Html::encode($resultData[0]['tagged']) ?></td>
+            <td ><?= Html::encode($resultData[0]['fromdate']) ?></td>
+            <td ><?= Html::encode($resultData[0]['todate']) ?></td>
+            <td ><?= Html::encode($resultData[0]['created']) ?></td>
             </tr>
         </tbody>
     </table>
@@ -30,30 +30,39 @@ $this->title = 'Question Details';
     
 
     <div style="margin-top: 40px;"></div>
-    <h3>Resultado:</h3>
+    <h3>Result:</h3>
     
     <table class="table">
-        <thead>
+        <thead class="text-center">
             <tr>
                 <th>Tags</th>
                 <th>Name</th>
                 <th>Link</th>
+                <th>Date of create</th>
                 <th>Score</th>
                 <th>View Count</th>
             </tr>
         </thead>
-        <tbody>
-            <?php foreach ($resultData[0]['result']['items'] as $data): ?>
+        <tbody class="text-center">
+            <?php if (empty($resultData[0]['result']['items'])): ?>
             <tr>
+                <td colspan="5" style="text-align: center;">No se obtuvieron resultados de la API.</td>
+            </tr>
+            <?php else: ?>
+            <?php foreach ($resultData[0]['result']['items'] as $data): ?>
+                <tr>
                 <td><?= implode(', ', $data['tags']) ?></td>
                 <td><?= Html::encode($data['owner']['display_name']) ?></td>
                 <td>
                     <?= Html::a('<i class="fa fa-link"></i>', $data['link'], ['target' => '_blank']) ?>
                 </td>
+                <td><?= date('Y-m-d', $data['creation_date']) ?></td>
                 <td><?= Html::encode($data['score']) ?></td>
                 <td><?= Html::encode($data['view_count']) ?></td>
-            </tr>
+                </tr>
             <?php endforeach; ?>
+            <?php endif; ?>
+        </tbody>
         </tbody>
     </table>
 </div>
