@@ -32,10 +32,13 @@ Estructura del directorio
 Requerimientos
 ------------
 
-El requerimiento minimo para este proyecto es PHP 7.4
+- El requerimiento minimo para este proyecto es PHP 7.4
 
-En mi caso yo lo he ejecutado con PHP 8.1.
+- En mi caso yo lo he ejecutado con PHP 8.1.
 
+- mysql  Ver 15.1 Distrib 10.6.17-MariaDB
+
+- Ubuntu 20.04.6 LTS
 
 Instalacion
 ------------
