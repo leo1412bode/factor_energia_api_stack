@@ -32,10 +32,17 @@ class ApiQueryController extends \yii\web\Controller
             $fromdate = $data['fromdate'];
         }
 
+
+
         try {
             $client = new \GuzzleHttp\Client();
             $response = $client->request('GET', 'https://api.stackexchange.com/2.2/questions', [
-                'query' => compact('tagged', 'todate', 'fromdate') + ['site' => 'stackoverflow'],
+                'query' => [
+                    'tagged' => $tagged,
+                    'todate' => $todate,
+                    'fromdate' => $fromdate,
+                    'site' => 'stackoverflow',
+                ]
             ]);
 
             $result = json_decode($response->getBody()->getContents(), true);
